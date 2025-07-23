@@ -1,4 +1,4 @@
-package org.example;
+package org.ClassesDoSistema;
 
 public class Calculadora {
     public int somar(int a, int b) {
@@ -11,5 +11,9 @@ public class Calculadora {
 
     public boolean e_par(int number) {
         return number % 2 == 0;
+    }
+
+    public float dividir(float a, float b) {
+        return a/b;
     }
 }
