@@ -33,17 +33,20 @@ public class TesteLoginSelenium {
         driver.findElement(loginButton).click();
     }
 
+    public void acessarPagina() {
+        driver.get("https://www.saucedemo.com");
+    }
+
     @Test
     @DisplayName("Login invalido no Site")
     void testaLoginInvalido() {
-        driver.get("https://www.saucedemo.com");
+        acessarPagina();
     }
 
     @Test
     @DisplayName("Login valido no Site")
     void testaLoginValido() {
-        // 1. Acessar página
-        driver.get("https://www.saucedemo.com");
+        acessarPagina();
 
         // 2. Preencher credenciais
         login(nome, senha);
@@ -56,8 +59,7 @@ public class TesteLoginSelenium {
     @Test
     @DisplayName("Adicionar item ao carrinho")
     void testaAdicionarCarrinho() {
-        // 1. Acessar página
-        driver.get("https://www.saucedemo.com");
+        acessarPagina();
 
         // 2. Preencher credenciais
         login(nome, senha);
