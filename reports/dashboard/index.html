@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>TestRunner Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>TestRunner Automation</h1>
+
+    <div class="controls">
+        <button id="runTestsBtn">Executar Todos os Testes</button>
+        <div class="filters">
+            <label><input type="checkbox" class="tag-filter" value="smoke" checked> Smoke</label>
+            <label><input type="checkbox" class="tag-filter" value="regressao" checked> Regressão</label>
+        </div>
+    </div>
+
+    <div id="results">
+        <div class="summary">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="stats">
+                <span id="passed">0</span> ✅ |
+                <span id="failed">0</span> ❌ |
+                <span id="total">0</span> 🧪
+            </div>
+        </div>
+        <table id="resultsTable">
+            <thead>
+            <tr>
+                <th>Teste</th>
+                <th>Status</th>
+                <th>Duração</th>
+                <th>Detalhes</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
