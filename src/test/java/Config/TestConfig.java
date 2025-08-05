@@ -6,12 +6,17 @@ import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 import java.util.ArrayList;
 
 public abstract class TestConfig {
 
 
     protected static String TEST_CASE_NAME = "";
+    protected static String username = "standard_user";
+    protected static String password = "secret_sauce";
     protected static String mensagem = "";
     protected static String nomeMetodo = "";
     protected static String momentoExecucao = "";
@@ -20,6 +25,7 @@ public abstract class TestConfig {
     protected  static String mensagemErro = "";
     protected  static boolean sucesso = true;
     protected static ArrayList<TestResult> results = new ArrayList<>();
+    protected static WebDriverWait wait;
 
 
     public static void openBrowser() throws Exception {
@@ -27,6 +33,7 @@ public abstract class TestConfig {
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com");
+        wait = new WebDriverWait(driver, Duration.ofSeconds(2));
     }
 
     public void inicioMetodoTeste(String nomeMetodo) {

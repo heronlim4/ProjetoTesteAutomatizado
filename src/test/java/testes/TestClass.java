@@ -4,7 +4,7 @@ import Config.TestConfig;
 import Config.TestResult;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TestClass extends TestConfig {
 
@@ -52,21 +52,39 @@ public class TestClass extends TestConfig {
         inicioMetodoTeste("método 1");
         {
             checkpoint("Insere nome e senha");
-
+            driver.findElement(By.id("user-name")).sendKeys(username);
+            driver.findElement(By.id("password")).sendKeys(password);
+        }
+        {
+            checkpoint("Clica no botão de login");
+            driver.findElement(By.id("login-button")).click();
         }
         {
             checkpoint("Verifica se o login foi efeutado corretamente");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='title'][contains(.,'Products')]")));
         }
         fimMetodoTeste();
     }
 
     public void addToCart() throws Exception {
         inicioMetodoTeste("método 2");
+        String productName = "Sauce Labs Backpack";
         {
-            checkpoint("Entra no módulo");
+            checkpoint("Seleciona item");
+            driver.findElement(By.xpath("//div[normalize-space()='Sauce Labs Backpack']")).click();
         }
         {
-            checkpoint("Entra na funcionalidade");
+            checkpoint("Verifica as informações do item");
+            assert driver.findElement(By.xpath("//div[@class='inventory_details_name large_size']")).getText().equals(productName);
+        }
+        {
+            checkpoint("Adiciona item ao carrinho");
+            driver.findElement(By.id("add-to-cart")).click();
+        }
+        {
+            checkpoint("Verifica se o botão foi alterado");
+            wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.id("add-to-cart"))));
+            driver.findElement(By.id("remove"));
         }
         fimMetodoTeste();
     }
